@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "inv_mux = inv_mux.inv_mux_node:main",
         ],
     },
 )
