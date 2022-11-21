@@ -11,9 +11,9 @@ class InverseMux(Node):
         super().__init__("inv_mux")
         self.declare_parameter('num_parall_nodes')
 
-        if self.get_parameter('num_parall_nodes'): 
-            self.n = self.get_parameter('num_parall_nodes')
-        else: ValueError('Number of parallel nodes not provided.')
+        if self.get_parameter('num_parall_nodes').value: 
+            self.n = int(self.get_parameter('num_parall_nodes').value)
+        else: raise ValueError('Number of parallel nodes not provided.')
 
         self.subscriber_ = self.create_subscription(OrderedSegmentation, "/lanenet_out", self.parall_callback, 10)
         self.publishers_ = []
